@@ -21,20 +21,7 @@ public class MouseRotation : MonoBehaviour
         Vector3 oPosition = transform.position;
 
         if (cameraController.getNarrative()) { // 1인칭 시점
-            /*
-            mPosition.z = oPosition.z - Camera.main.transform.position.z;
-
-            Vector3 target = Camera.main.ScreenToWorldPoint(mPosition);
-
-            float dy = target.y - oPosition.y;
-            float dx = target.x - oPosition.x;
-
-            float rotateDegree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
-
-            transform.rotation = Quaternion.Euler(0f, rotateDegree, 0f);
-            */
-
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+            transform.Rotate(0f, Input.GetAxis("Mouse X") * sensitivityX, 0f);
         }
         else { // 3인칭 시점
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
