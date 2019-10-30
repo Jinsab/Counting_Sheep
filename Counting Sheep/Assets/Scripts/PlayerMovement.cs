@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Quaternion rotation = Quaternion.identity;
     private bool isJump = false;
+    private Rigidbody rigidbody;
+
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -33,14 +39,19 @@ public class PlayerMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+        movement = transform.TransformDirection(movement);
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            transform.Translate(movement * (speed * 1.5f) * Time.deltaTime);
+            // transform.Translate(movement * (speed * 1.5f) * Time.deltaTime);
+            rigidbody.AddForce(movement * (speed * 1.5f));
         }
         else
         {
-            transform.Translate(movement * speed * Time.deltaTime);
+            //transform.Translate(movement * speed * Time.deltaTime);
+            rigidbody.AddForce(movement * speed);
         }
+
+        rigidbody.velocity = Vector3.zero;
     }
 }
