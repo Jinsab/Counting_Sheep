@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion rotation = Quaternion.identity;
     private bool isJump = false;
     private Rigidbody rigidbody;
+    private Animator animator;
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -45,13 +47,19 @@ public class PlayerMovement : MonoBehaviour
         {
             // transform.Translate(movement * (speed * 1.5f) * Time.deltaTime);
             rigidbody.AddForce(movement * (speed * 1.5f));
+            animator.SetInteger("animation", 3);
         }
-        else
+        else if (movement != new Vector3(0f, 0f, 0f))
         {
             //transform.Translate(movement * speed * Time.deltaTime);
             rigidbody.AddForce(movement * speed);
+            animator.SetInteger("animation", 2);
+        }
+        else
+        {
+            animator.SetInteger("animation", 0);
         }
 
-        rigidbody.velocity = Vector3.zero;
+        //rigidbody.velocity = Vector3.zero;
     }
 }
