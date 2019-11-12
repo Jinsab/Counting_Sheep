@@ -2,7 +2,7 @@
 ## 3D 술래잡기 게임
 
 ### 게임명
- Counting Sheep
+ Counting Sheep (가제)
 
 ### 장르
  3D 술래잡기
