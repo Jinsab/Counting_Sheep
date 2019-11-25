@@ -13,8 +13,11 @@ public class Agent : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        agent.destination = target.transform.position;
+        if (!agent.pathPending)
+        {
+            agent.destination = target.transform.position;
+        }
     }
 }
