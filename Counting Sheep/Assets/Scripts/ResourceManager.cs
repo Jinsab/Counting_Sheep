@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-    private int m_Resource;
-    private int m_Energy;
+    [SerializeField] private int m_Resource;
+    [SerializeField] private int m_Energy;
+    public Text ResourceText;
+    public Text EnergyText;
 
     public int Resource
     {
@@ -16,7 +19,8 @@ public class ResourceManager : MonoBehaviour
 
         set
         {
-            m_Resource = Resource;
+            m_Resource = value;
+            ResourceText.text = "" + m_Resource;
         }
     }
 
@@ -29,7 +33,8 @@ public class ResourceManager : MonoBehaviour
 
         set
         {
-            m_Energy = Energy;
+            m_Energy = value;
+            EnergyText.text = "" + m_Energy;
         }
     }
 
