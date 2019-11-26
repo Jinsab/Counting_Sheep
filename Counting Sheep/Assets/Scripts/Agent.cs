@@ -6,11 +6,20 @@ using UnityEngine.AI;
 public class Agent : MonoBehaviour
 {
     public GameObject target;
+    [SerializeField] private bool autoVelociter;
     private NavMeshAgent agent;
+    private new Rigidbody rigidbody;
+    
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (autoVelociter)
+            StartCoroutine("VelocityZero");
     }
 
     void FixedUpdate()
@@ -19,5 +28,14 @@ public class Agent : MonoBehaviour
         {
             agent.destination = target.transform.position;
         }
+    }
+
+    IEnumerable VelocityZero()
+    {
+        rigidbody.velocity = rigidbody.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine("VelocityZero");
     }
 }

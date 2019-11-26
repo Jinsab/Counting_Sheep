@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Quaternion rotation = Quaternion.identity;
     private bool isJump = false;
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
     private Animator animator;
 
     private void Start()
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rotation.eulerAngles = new Vector3(90f, 0f, 0f);
-            cameraObject.transform.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
+            cameraObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 20f, gameObject.transform.position.z);
             cameraObject.transform.rotation = rotation;
         }
     }
