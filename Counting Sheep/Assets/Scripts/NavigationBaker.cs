@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 public class NavigationBaker : MonoBehaviour
 {
-			//[SerializeField] private NavMeshSurface[] surfaces;
-			//public NavMeshsS
+	//[SerializeField] private NavMeshSurface[] surfaces;
+	//public NavMeshsS
 
-			void Start()
-			{
+	void Start()
+	{
         
-			}
+	}
 
-			// Update is called once per frame
-			void Update()
-			{
+	// Update is called once per frame
+	void Update()
+	{
         
-			}
+	}
 }
