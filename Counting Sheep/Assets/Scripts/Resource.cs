@@ -34,7 +34,7 @@ public class Resource : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-					time = 0f;
+			time = 0f;
 		}
 	}
 
